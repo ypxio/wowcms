@@ -1,0 +1,219 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica
+}
+
+body{
+    background-image: url(../resources/img/absurdidad.png);
+    /*background: #FAC166;*/
+}
+#container
+{
+    width: 800px;
+    margin: 0 auto;
+}
+#header, #footer
+{
+    height: 150px;
+    /*background: black*/
+}
+
+#footer
+{
+    border-top: 1px dashed #999;
+    text-align: center;
+    font-size: 10px;
+    padding-top: 10px;
+    color: #777;
+    line-height: 15px
+}
+
+#footer a
+{
+    color: maroon;
+    text-decoration: none
+}
+
+#footer a:hover
+{
+    text-decoration: underline
+}
+
+#header img
+{
+    width: 200px;
+    margin: 0 auto;
+    margin-left: 300px;
+    margin-top: 50px
+}
+
+
+
+.ui-widget-content
+{
+    list-style-type: none
+}
+
+.ui-widget-content .title a, .title
+.ui-widget-content .post, .post
+{
+    display: block
+}
+
+.ui-widget-content
+{
+    /*margin: 5px;*/
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+    /*background: blue*/
+    border-bottom: 1px solid #ccc
+}
+
+
+
+.ui-widget-content .title a, .title a, .title
+{
+    font-size: 28px;
+    font-weight: bold;
+    /*margin-bottom: 10px;*/
+    color: maroon;
+    text-decoration: none;
+    margin-bottom: 0px;
+    /*opacity: 0.7;*/
+}
+
+.ui-widget-content .title a:hover, .title a:hover
+{
+    text-decoration: underline
+}
+.ui-widget-content .post, .post
+{
+    color: #777;
+    font-size: 14px;
+    line-height: 25px;
+    color: #888;
+    /*border-bottom: 1px solid black;*/
+    padding-bottom: 50px;
+    padding-top: 20px
+    
+}
+
+.single_post
+{
+    padding-bottom: 10px
+}
+
+.ui-datatable * {
+     border : 0px !important;
+     background: none;
+}
+
+.ui-datatable thead{
+    display: none
+}
+
+.ui-datatable tr.ui-datatable-even
+{
+    border: 1px solid black;
+    /*padding-bottom: 20px*/
+    /*border-bottom: 1px solid black;*/
+    /*background: black*/
+}
+
+.single
+{
+    /*border-bottom: 1px solid black;*/
+}
+
+
+.meta
+{
+    font-size: 10px;
+    font-style: italic;
+    color: #555;
+    display: block;
+    margin-top: 5px
+}
+
+.meta b
+{
+    color: maroon;
+}
+
+.ui-datalist-content
+{
+    border: none;
+    /*background: #ddd;*/
+    padding-bottom: 0;
+    /*padding: 10px;*/
+    font-size: 12px
+}
+
+.ui-datalist-item
+{
+    /*margin-bottom: 5px*/
+    margin-bottom: 10px;
+    border-top: 1px solid #aaa;
+    padding-top: 5px;
+    padding-bottom: 15px
+}
+
+.ui-datalist-data, .ui-datalist, .ui-datalist-item
+{
+    list-style-type: none
+}
+
+.name_comment, .date_comment, .content_comment
+{
+    display: block
+}
+
+.date_comment
+{
+    margin-bottom: 10px
+}
+
+.name_comment
+{
+    font-weight: bold;
+    color: maroon
+}
+
+.date_comment
+{
+    font-weight: bold;
+    color: black
+}
+
+.content_comment
+{
+    font-style: italic
+}
+
+input[type="text"], .ui-inputfield
+{
+    border: 1px solid #888;
+    height: 30px;
+    padding: 0px;
+    display: block;
+    width: 300px;
+    margin-bottom: 10px
+}
+
+textarea
+{
+    border: 1px solid #888
+}
+
+.ui-button-text
+{
+    background: #999;
+    color: white;
+    text-shadow: none;
+    border: none
+}
+
+
+

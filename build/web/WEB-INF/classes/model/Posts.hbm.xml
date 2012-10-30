@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 20, 2012 11:34:37 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="wowcms" name="model.Posts" table="posts">
+    <id name="id_post" type="java.lang.Integer">
+      <column name="id_post"/>
+      <generator class="identity"/>
+    </id>
+    <property name="username" type="string">
+      <column length="50" name="username"/>
+    </property>
+    <property name="title" type="string">
+      <column length="255" name="title"/>
+    </property>
+    <property name="content" type="text">
+      <column length="2555" name="content"/>
+    </property>
+    <property name="date" type="string">
+      <column length="50" name="date"/>
+    </property>
+  </class>
+</hibernate-mapping>

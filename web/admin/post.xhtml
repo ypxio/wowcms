@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="admin.css"  />
+    </h:head>
+    <h:body>
+        <div id="admin_sidebar">
+            <h:link outcome="posting" value="New Post" class="button"/>
+            <h:link value="Manage Post" outcome="post" class="button"/>
+            <h:link value="Manage Comment" outcome="comment" class="button" /><br/>
+            <a class="button" href="../front/home.xhtml">View Site</a>
+            
+        </div>
+        <div id="admin_content">
+        
+            <h:form id="form_buku">
+                
+
+                <p:dataTable id="grid_buku" style="width: 100%;" var="post" value="#{beanPost.post}"
+                     paginator="true" rows="10"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     rowsPerPageTemplate="5,10,15" editable="true">
+
+                    <p:ajax event="rowEdit" listener="#{beanPost.rowEditListener}" />
+
+                    <f:facet name="header">
+                        List of Posting
+                    </f:facet>
+
+                    <p:column headerText="ID">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{post.id_post}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{post.id_post}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Username">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{post.username}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{post.username}"/>
+                        </f:facet>
+                    </p:cellEditor>
+
+                </p:column>
+
+                <p:column headerText="Judul">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{post.title}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{post.title}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Content">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{post.content}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{post.content}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Tanggal">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{post.date}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{post.date}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Edit">
+                    <p:rowEditor />
+                    <!--<p:commandButton icon="ui-icon-search" value="Edit" update=":form_buku:display_book" oncomplete="bukuDialog.show()">
+                        <f:setPropertyActionListener value="#{post}" target="#{beanPost.selectedPost}"/>
+                    </p:commandButton>-->
+                </p:column>
+
+                    <p:column headerText="Delete">
+                        <p:commandButton icon="ui-icon-search" value="Delete" action="#{beanPost.delete}"/>
+                    </p:column>
+
+            </p:dataTable>
+
+            <p:dialog header="Buku Detail" widgetVar="bukuDialog" resizable="true"
+                      showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="display_book" columns="2" cellpadding="4">
+
+                    <h:outputText value="ID" />
+                    <h:outputText value="#{beanPost.selectedPost.idPost}" />
+                    <h:outputText value="JUDUL" />
+                    <h:outputText value="#{beanPost.selectedPost.username}" />
+                    <h:outputText value="PENGARANG" />
+                    <h:outputText value="#{beanPost.selectedPost.title}" />
+                    <h:outputText value="PENERBIT" />
+                    <h:outputText value="#{beanPost.selectedPost.content}" />
+                    <h:outputText value="TAHUN" />
+                    <h:outputText value="#{beanPost.selectedPost.date}" />
+
+
+
+                </h:panelGrid>
+            </p:dialog>
+
+
+
+            </h:form>
+        
+        </div>
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="admin.css"  />
+    </h:head>
+    <h:body>
+        <div id="admin_sidebar">
+            <h:link outcome="posting" value="New Post" class="button"/>
+            <h:link value="Manage Post" outcome="post" class="button"/>
+            <h:link value="Manage Comment" outcome="comment" class="button" /><br/>
+            <a class="button" href="../front/home.xhtml">View Site</a>
+        </div>
+        <div id="admin_content">
+        
+        <h:form id="form_buku">
+                <br/>
+                <h1>New Posting</h1>
+                <br/>
+                <h:inputHidden value="#{beanPost.date}"/>
+                <!--<h:inputHidden value="#{beanPost.username}"/>-->
+                
+                <h:inputText id="title" value="#{beanPost.title}"/><br/>
+                <p:watermark for="title" value="Judul Posting" />
+                <h:inputTextarea cols="80" rows="10" id="content" value="#{beanPost.content}" />
+
+                
+                <br/>
+                <p:commandButton action="#{beanPost.save}" value="Save" />
+                
+        <!--</p:dialog>-->
+            
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

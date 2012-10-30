@@ -1,0 +1,65 @@
+/* 
+    Document   : admin
+    Created on : Jun 21, 2012, 12:55:05 PM
+    Author     : yuripertamax
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+*
+{
+   padding: 0;
+   margin: 0;
+   font-family: "Helvetica";
+}
+
+#admin_sidebar
+{
+    width: 10%;
+    float: left;
+    background: maroon;
+    padding: 10px;
+    text-align: right;
+    height: 700px;
+    font-size: 10px
+}
+
+#admin_sidebar .button{
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px
+}
+
+#admin_sidebar .button:hover{
+    text-decoration: underline
+}
+
+
+#admin_content
+{
+    width: 87%;
+    float: right;
+    font-size: 10px;
+    padding: 10px
+}
+
+input[type="text"], .ui-inputfield
+{
+    border: 1px solid #888;
+    height: 30px;
+    padding: 0px;
+    display: block;
+    width: 300px;
+    margin-bottom: 10px
+}
+
+textarea
+{
+    border: 1px solid #888
+}
+

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>List Buku</title>
+         <link type="text/css" rel="stylesheet" href="default.css" />
+    </h:head>
+    <h:body>
+        <h:form id="form_buku">
+            <p:commandButton icon="ui-icon-disk" value="Add"/>
+            <p:dataTable id="basic" var="buku" value="#{bookBean.book}" paginator="true" rows="10" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" selection="#{bookBean.choosen}">
+                <p:column sortBy="#{buku.bukuId}">
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{buku.bukuId}"/>
+                    </p:column>
+                <p:column sortBy="#{buku.bukuJudul}">
+                        <f:facet name="header">
+                            <h:outputText value="Title"/>
+                        </f:facet>
+                        <h:outputText value="#{buku.bukuJudul}"/>
+                    </p:column>
+                <p:column sortBy="#{buku.bukuPengarang}">
+                        <f:facet name="header">
+                            <h:outputText value="Author"/>
+                        </f:facet>
+                        <h:outputText value="#{buku.bukuPengarang}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Publisher"/>
+                        </f:facet>
+                        <h:outputText value="#{buku.bukuPubliser}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tahun"/>
+                        </f:facet>
+                        <h:outputText value="#{buku.bukuTahun}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <p:commandButton immediate="true" icon="ui-icon-search" update=":form_buku:DialogBox" actionListener="#{bookBean.prepareView}" oncomplete="dlg.show();" value="View" />
+                        <p:commandButton icon="ui-icon-arrowrefresh-1-w" value="Edit"/>
+                        <p:commandButton icon="ui-icon-close" value="Delete"/>
+                        
+                    </p:column>
+            </p:dataTable>
+            
+            <p:dialog header="Detail Buku" widgetVar="dlg" modal="true" id="DialogBox">
+                <h:panelGrid id="display" columns="2" cellpadding="4"> 
+                <h:outputText value="Id"/>
+                <h:outputText value="#{bookBean.choosen.bukuId}"/>
+                <h:outputText value="Judul"/>
+                <h:outputText value="#{bookBean.choosen.bukuJudul}"/>
+                <h:outputText value="Pengarang"/>
+                <h:outputText value="#{bookBean.choosen.bukuPengarang}"/>
+                <h:outputText value="Penerbit"/>
+                <h:outputText value="#{bookBean.choosen.bukuPubliser}"/>
+                <h:outputText value="Tahun"/>
+                <h:outputText value="#{bookBean.choosen.bukuTahun}"/>
+                </h:panelGrid>
+            </p:dialog>
+            
+            <p:dialog header="Form Buku" widgetVar="dlg_form" modal="true">
+                <h:panelGrid id="display" columns="2" cellpadding="4"> 
+                <h:outputText value="Id"/>
+                <p:inputText/>
+                <h:outputText value="Judul"/>
+                <h:outputText value="#{bookBean.choosen.bukuJudul}"/>
+                <h:outputText value="Pengarang"/>
+                <h:outputText value="#{bookBean.choosen.bukuPengarang}"/>
+                <h:outputText value="Penerbit"/>
+                <h:outputText value="#{bookBean.choosen.bukuPubliser}"/>
+                <h:outputText value="Tahun"/>
+                <h:outputText value="#{bookBean.choosen.bukuTahun}"/>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

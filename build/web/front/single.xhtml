@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>WOWCMS - Content Wow Systems</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+
+    </h:head>
+    <h:body>
+
+        <!--<h:outputText value="#{beanPost.cur_id}"/>-->
+
+        
+        <div id="container">
+
+            <div id="header">
+                <h:graphicImage library="img" name="logowow.png" />
+            </div> <!-- header -->
+
+            <!--<ui:include src="header.xhtml" />-->
+            
+            <div id="content">
+                <h:form>
+                        <span class="title">
+                            <h:outputText value="#{beanPost.detailPost.title}"/>
+                        </span>
+                        <span class="meta">
+                            Posted by <b><h:outputText value="#{beanPost.detailPost.username}" /></b>
+                            at <b><h:outputText value="#{beanPost.detailPost.date}" /></b>
+                        </span>
+                        <span class="post single_post">
+                            <h:outputText value="#{beanPost.detailPost.content}" />
+                        </span>
+                    <!--</p:column>-->
+                <!--</p:dataTable>-->
+                </h:form>
+            </div> <!-- content -->
+
+
+            <p:dataList value="#{beanPost.comment}" var="comment">
+                <span class="name_comment"><h:outputText value="#{comment.name}"/></span>
+                <span class="date_comment"><h:outputText value="#{comment.date}"/></span>
+                <span class="content_comment"><h:outputText value="#{comment.content}"/></span>
+            </p:dataList>
+
+            Post a Comment<br/><br/>
+            <h:form>
+            <h:panelGrid columns="2" cellpadding="4">
+
+                <h:inputHidden value="#{beanPost.cur_id}"/>
+                <h:inputHidden value="#{beanPost.comment_date}"/>
+
+                <h:inputText id="name" value="#{beanPost.comment_name}" /><br/>
+                <h:inputText id="title" value="#{beanPost.comment_email}" /><br/>
+                <h:inputTextarea cols="80" rows="10" id="content" value="#{beanPost.comment_content}" />
+
+                <p:commandButton action="#{beanPost.save_comment}" value="Save"/>
+
+            </h:panelGrid>
+            </h:form>
+
+            <div id="footer">
+
+            </div> <!-- footer -->
+            
+        </div> <!-- container -->
+    </h:body>
+</html>
+

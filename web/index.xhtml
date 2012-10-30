@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            body{
+                font-family: cursive;
+                font-size: 12px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        
+        
+        <h:form id="form_buku">
+            <p:commandButton oncomplete="bukuForm.show()" value="Add Data"></p:commandButton> 
+            <p:dataTable id="grid_buku" style="width: 100%;" var="buku" value="#{beanPost.post}"
+                 paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" editable="true">
+                
+                <p:ajax event="rowEdit" listener="#{beanPost.rowEditListener}" />
+            
+                <p:column headerText="ID" sortBy="#{buku.id_post}">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{buku.id_post}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{buku.id_post}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column sortBy="#{buku.username}" headerText="JUDUL" filterBy="#{buku.username}" footerText="contains" filterMatchMode="contains">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{buku.username}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{buku.username}"/>
+                    </f:facet>
+                </p:cellEditor>
+                
+            </p:column>
+            
+            <p:column headerText="PENGARANG" sortBy="#{buku.title}">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{buku.title}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{buku.title}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column headerText="PENERBIT" sortBy="#{buku.content}">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{buku.content}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{buku.content}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+        
+            <p:column headerText="TAHUN" sortBy="#{buku.date}">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{buku.date}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{buku.date}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column style="text-align: center; padding: 2px;">
+                <p:rowEditor  />
+                <p:commandButton icon="ui-icon-search" update=":form_buku:display_book" oncomplete="bukuDialog.show()"> 
+                    <f:setPropertyActionListener value="#{buku}" target="#{beanBuku.selectedBuku}"/>
+                </p:commandButton>
+            </p:column>
+            
+        </p:dataTable>
+                    
+        <p:dialog header="Buku Detail" widgetVar="bukuDialog" resizable="true"  
+                  showEffect="fade" hideEffect="explode" modal="true">
+            <h:panelGrid id="display_book" columns="2" cellpadding="4">
+                
+                <h:outputText value="ID" />
+                <h:outputText value="#{beanBuku.selectedBuku.id_post}" />
+                <h:outputText value="JUDUL" />
+                <h:outputText value="#{beanBuku.selectedBuku.username}" />
+                <h:outputText value="PENGARANG" />
+                <h:outputText value="#{beanBuku.selectedBuku.title}" />
+                <h:outputText value="PENERBIT" />
+                <h:outputText value="#{beanBuku.selectedBuku.content}" />
+                <h:outputText value="TAHUN" />
+                <h:outputText value="#{beanBuku.selectedBuku.date}" />
+                
+                
+            </h:panelGrid>
+        </p:dialog>
+        
+        <p:dialog header="Form Buku" widgetVar="bukuForm" resizable="true"  
+                  showEffect="fade" hideEffect="explode" modal="true">
+            <h:panelGrid columns="2" cellpadding="4">
+                
+                <h:outputText value="Username" />
+                <h:inputText id="username" value="#{beanBuku.username}" />
+                <h:outputText value="Title" />
+                <h:inputText id="title" value="#{beanBuku.title}" />
+                <h:outputText value="Content" />
+                <h:inputText id="content" value="#{beanBuku.content}" />
+                <h:outputText value="Date" />
+                <h:inputText id="date" value="#{beanBuku.date}" />
+                
+                <p:commandButton update=":form_buku:grid_buku" action="#{beanBuku.save}" oncomplete="bukuForm.hide()" value="Save" />
+                
+            </h:panelGrid>
+        </p:dialog>
+            
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Comment Manager</title>
+        <h:outputStylesheet library="css" name="admin.css"  />
+    </h:head>
+    <h:body>
+        <div id="admin_sidebar">
+            
+            <h:link outcome="posting" value="New Post" class="button"/>
+            <h:link value="Manage Post" outcome="post" class="button"/>
+            <h:link value="Manage Comment" outcome="comment" class="button" /><br/>
+            <a class="button" href="../front/home.xhtml">View Site</a>
+        </div>
+        <div id="admin_content">
+        <h:form id="form_buku">
+            <!--<p:commandButton oncomplete="bukuForm.show()" value="Add Data"></p:commandButton>--> 
+            <p:dataTable id="grid_buku" style="width: 100%;" var="comment" value="#{beanComment.comment}"
+                 paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" editable="true">
+                
+                <p:ajax event="rowEdit" listener="#{beanComment.rowEditListener}" />
+
+                <f:facet name="header">
+                    List Of Comments
+                </f:facet>
+                <p:column headerText="Id Comment">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.id_comment}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.id_comment}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column headerText="Name">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.name}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.name}"/>
+                    </f:facet>
+                </p:cellEditor>
+                
+            </p:column>
+            
+            <p:column headerText="Email">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.email}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.email}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column headerText="Content">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.content}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.content}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+        
+            <p:column headerText="Date">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.date}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.date}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="ID Posts">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{comment.id_posts}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{comment.id_posts}"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column headerText="Edit">
+                <p:rowEditor  />
+            </p:column>
+
+                <p:column headerText="Delete">
+                    <h:commandButton value="Delete" action="#{beanComment.delete}"/>
+                </p:column>
+            
+        </p:dataTable>
+                    
+        <p:dialog header="Buku Detail" widgetVar="bukuDialog" resizable="true"  
+                  showEffect="fade" hideEffect="explode" modal="true">
+            <h:panelGrid id="display_book" columns="2" cellpadding="4">
+                
+                <h:outputText value="ID" />
+                <h:outputText value="#{beanComment.selectedComment.id_comment}" />
+                <h:outputText value="JUDUL" />
+                <h:outputText value="#{beanComment.selectedComment.name}" />
+                <h:outputText value="PENGARANG" />
+                <h:outputText value="#{beanComment.selectedComment.email}" />
+                <h:outputText value="PENERBIT" />
+                <h:outputText value="#{beanComment.selectedComment.content}" />
+                <h:outputText value="TAHUN" />
+                <h:outputText value="#{beanComment.selectedComment.date}" />
+                <h:outputText value="TAHUN" />
+                <h:outputText value="#{beanComment.selectedComment.id_posts}" />
+                
+                
+            </h:panelGrid>
+        </p:dialog>
+        
+        
+            
+        </h:form>
+        </div>
+    </h:body>
+</html>
+
